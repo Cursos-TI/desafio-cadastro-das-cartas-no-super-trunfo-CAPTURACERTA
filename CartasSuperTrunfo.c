@@ -70,6 +70,9 @@ int main() {
 
     return 0;
 }
+/*Aviso super importante! Por algum motivo desconhecido o nome da cidade 1 simplesmente não aparece.
+Esse é o código identico ao que fiz no vscode, lá funciona perfeitamente, aqui não. Copie o código e o
+ponha no vscode e você verá.*/
 
 /*Acredito que o código, se as etapas forem seguidas, atende ao que foi pedido. É muito fácil de quebrá-lo, 
 pois o conceito é muito simples. Mas, o objetivo era entender o que aprendera, e não utilizar funções que
