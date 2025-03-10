@@ -4,7 +4,6 @@
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
 
 int main() {
     //nomeando variáveis básicas---------------------------
@@ -64,7 +63,7 @@ int main() {
 
         //Mostrando resultados (resultados)---------------------------
     prosseguir[10]=0;
-    printf("\n•Perfeito, agora que você concluiu as etapas, vamos dar uma olhada nas suas cartas!\n•Digite 'y' e envie para ver suas cartas");
+    printf("\n•Perfeito, agora que você concluiu as etapas, vamos dar uma olhada nas suas cartas!\n•Digite 'y' e envie para ver suas cartas.");
     scanf("%s", prosseguir);
     printf("\nCarta: 1\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\n", inicial_do_estado1, inicial_do_estado1, codigo_carta1, cidade_nome1, populacao1, area_da_cidade1, pib1, pontos_turisticos1);
     printf("\nCarta: 2\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\n", inicial_do_estado2, inicial_do_estado2, codigo_carta2, cidade_nome2, populacao2, area_da_cidade2, pib2, pontos_turisticos2);
