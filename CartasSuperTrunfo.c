@@ -71,3 +71,14 @@ int main() {
 
     return 0;
 }
+
+/*Acredito que o código, se as etapas forem seguidas, atende ao que foi pedido. É muito fácil de quebrá-lo, 
+pois o conceito é muito simples. Mas, o objetivo era entender o que aprendera, e não utilizar funções que
+ainda sequer sei utilizar.*/
+
+/* Alguns número, se forem exagerados, simplesmente quebram. Provavelmente tem a ver com a limitação das
+variáveis, mas não acho que haja muito o que eu possa fazer agora, talvez no próximo desafio.*/
+
+/*Matrícula: 202503548803
+Nome: Davi dos Santos Capitano
+Github: CAPTURACERTA*/
