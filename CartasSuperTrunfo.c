@@ -14,6 +14,9 @@ int main() {
     float area_da_cidade1, area_da_cidade2;
     float pib1, pib2;
     int pontos_turisticos1, pontos_turisticos2;
+    float densidade_pop1, densidade_pop2;
+    float PIB_pc1, PIB_pc2;
+    
     char prosseguir[10];
 
 
@@ -61,15 +64,26 @@ int main() {
         scanf("%d", &pontos_turisticos2);   //Pontos turísiticos cidade 2
 
 
+        //Calculando Densidade populacional e PIB per capita---------------------------
+    densidade_pop1 = populacao1 / area_da_cidade1;
+    densidade_pop2 = populacao2 / area_da_cidade2;
+
+    PIB_pc1 = pib1 / populacao1;
+    PIB_pc2 = pib2 / populacao2;
+
+
         //Mostrando resultados (resultados)---------------------------
     prosseguir[10]=0;
     printf("\n•Perfeito, agora que você concluiu as etapas, vamos dar uma olhada nas suas cartas!\n•Digite 'y' e envie para ver suas cartas.");
     scanf("%s", prosseguir);
-    printf("\nCarta: 1\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\n", inicial_do_estado1, inicial_do_estado1, codigo_carta1, cidade_nome1, populacao1, area_da_cidade1, pib1, pontos_turisticos1);
-    printf("\nCarta: 2\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\n", inicial_do_estado2, inicial_do_estado2, codigo_carta2, cidade_nome2, populacao2, area_da_cidade2, pib2, pontos_turisticos2);
+    printf("\nCarta: 1\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\n", inicial_do_estado1, inicial_do_estado1, codigo_carta1, cidade_nome1, populacao1, area_da_cidade1, pib1, pontos_turisticos1, densidade_pop1, PIB_pc1);
+    printf("\nCarta: 2\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\n", inicial_do_estado2, inicial_do_estado2, codigo_carta2, cidade_nome2, populacao2, area_da_cidade2, pib2, pontos_turisticos2, densidade_pop2, PIB_pc2);
 
     return 0;
 }
+
+
+        //---NOTAS DESAFIO NOVATO---
 /*Aviso super importante! Por algum motivo desconhecido o nome da cidade 1 simplesmente não aparece.
 Esse é o código identico ao que fiz no vscode, lá funciona perfeitamente, aqui não. Copie o código e o
 ponha no vscode e você verá.*/
@@ -81,6 +95,20 @@ ainda sequer sei utilizar.*/
 /* Alguns número, se forem exagerados, simplesmente quebram. Provavelmente tem a ver com a limitação das
 variáveis, mas não acho que haja muito o que eu possa fazer agora, talvez no próximo desafio.*/
 
-/*Matrícula: 202503548803
+
+        //---NOTAS DESAFIO AVENTUREIRO---
+/*
+1. Por algum motivo o nome da primeira cidade continua sem aparecer. Achei que fosse algum tipo de bug 
+que eventualmente sumiria ao recarregar a página, mas não parece ser o caso. Continuo sem ter qualquer 
+ideia sore o porquê disso, visto que na ide vscode funciona perfeitamente...
+
+2. As únicas atualizações feitas foram as instruções pedidas no nível aventureiro, pois acredito não
+saber o suficiente ainda para fazer atualizações melhores, como melhorias...
+*/
+
+
+        //--INFORMAÇÕES DO ALUNO---
+/*
 Nome: Davi dos Santos Capitano
-Github: CAPTURACERTA*/
+Github: CAPTURACERTA
+*/
