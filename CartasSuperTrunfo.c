@@ -1,21 +1,28 @@
-#include <stdio.h>
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
 
+#include <stdio.h>
+
 int main() {
     //nomeando variáveis básicas---------------------------
     char inicial_do_estado1, inicial_do_estado2;
     char codigo_carta1[3], codigo_carta2[3];
     char cidade_nome1[50], cidade_nome2[50];
-    int populacao1, populacao2;
+    unsigned long int populacao1, populacao2;
     float area_da_cidade1, area_da_cidade2;
     float pib1, pib2;
     int pontos_turisticos1, pontos_turisticos2;
-    float densidade_pop1, densidade_pop2;
+
+    float densidade_pop1, densidade_pop2, inverso_densidadePop1, inverso_densidadePop2;
     float PIB_pc1, PIB_pc2;
+
+    float superPoder1, superPoder2;
+    int vpopulacao, varea, vpib, vpontosT, vdensidadeP, vPIBpC, vsuperP, vtotal;
+    int avence = 0;
+    
     
     char prosseguir[10];
 
@@ -34,7 +41,7 @@ int main() {
     printf("\n3)Boa! Agora, ponha o nome de uma cidade desse estado. Obs1: Substitua os espaços por '_'. (Exemplo: Rio_de_Janeiro). Obs2: caso sua cidade tenha acento, não ponha. (exemplo: Apiaí -> Apiai)\nResposta:");
         scanf("%s", cidade_nome1);          //Nome da cidade 1
     printf("\n4)Você está indo bem! Agora a população da cidade. (Número inteiro)\nResposta:");
-        scanf("%d", &populacao1);           //Ppopulação da cidade 1
+        scanf("%lu", &populacao1);           //Ppopulação da cidade 1
     printf("\n5)Quase lá! Agora, a área da cidade em quilômetros quadrados(km²). Obs: substitua a vírgula por ponto. (Exemplo: '610,54' -> '610.54')\nResposta:");
         scanf("%f", &area_da_cidade1);      //area em km² da cidade 1
     printf("\n6)Agora, o PIB da cidade.(A mesma questão da vírgula e do ponto).\nResposta:"); 
@@ -44,7 +51,6 @@ int main() {
 
 
         //Criando a segunda carta (carta 2)---------------------------
-    prosseguir[10]=0;
     printf("\n•Sensacional! Agora que você já aprendeu, sigamos para a sua segunda carta!\n•Digite 'y' e envie para prosseguir.");
     scanf("%s", prosseguir);
 
@@ -55,7 +61,7 @@ int main() {
     printf("\n3) Nome da cidade do Estado. (substituindo espaços e omitindo acentos)\nResposta:");
         scanf("%s", cidade_nome2);          //Cidade nome 2
     printf("\n4) População da cidade\nResposta:");
-        scanf("%d", &populacao2);           //População cidade 2
+        scanf("%lu", &populacao2);           //População cidade 2
     printf("\n5) Área da cidade em quilômetros quadrados. (Substituindo vírgula por ponto)\nResposta:");
         scanf("%f", &area_da_cidade2);      //Área cidade 2
     printf("\n6) PIB da cidade.\nResposta:");
@@ -65,22 +71,92 @@ int main() {
 
 
         //Calculando Densidade populacional e PIB per capita---------------------------
-    densidade_pop1 = populacao1 / area_da_cidade1;
-    densidade_pop2 = populacao2 / area_da_cidade2;
+    densidade_pop1 = (float)populacao1 / area_da_cidade1;
+    densidade_pop2 = (float)populacao2 / area_da_cidade2;
 
     PIB_pc1 = pib1 / populacao1;
     PIB_pc2 = pib2 / populacao2;
 
+    inverso_densidadePop1 = area_da_cidade1 / populacao1;
+    inverso_densidadePop2 = area_da_cidade2 / populacao2;
 
-        //Mostrando resultados (resultados)---------------------------
-    prosseguir[10]=0;
+
+        //Calculando super poderes---------------------------
+    superPoder1 = (float) populacao1 + area_da_cidade1 + pib1 + pontos_turisticos1 + PIB_pc1 + inverso_densidadePop1;
+    superPoder2 = (float) populacao2 + area_da_cidade2 + pib2 + pontos_turisticos2 + PIB_pc2 + inverso_densidadePop2;
+
+
+        //Verificações---------------------------
+    if(populacao1 > populacao2){
+        vpopulacao = 1;
+        avence ++;
+    }else{
+        vpopulacao = 2;
+    }
+    if(area_da_cidade1 > area_da_cidade2){
+        varea = 1;
+        avence ++;
+    }else{
+        varea=2;
+    }
+    if(pib1 > pib2){
+        vpib=1;
+        avence ++;
+    }else{
+        vpib=2;
+    }
+    if(pontos_turisticos1 > pontos_turisticos2){
+        vpontosT=1;
+        avence ++;
+    }else{
+        vpontosT=2;
+    }
+    if(densidade_pop1 < densidade_pop2){
+        vdensidadeP=1;
+        avence ++;
+    }else{
+        vdensidadeP=2;
+    }
+    if(PIB_pc1 > PIB_pc2){
+        vPIBpC=1;
+        avence ++;
+    }else{
+        vPIBpC=2;
+    }
+    if(superPoder1 > superPoder2){
+        vsuperP=1;
+        avence ++;
+    }else{
+        vsuperP=2;
+    }
+
+    if(avence >= 4){
+        vtotal=1;
+    }else{
+        vtotal=2;
+    }
+
+
+
+
+        //Mostrando resultados das cartas (resultados)---------------------------
+    
     printf("\n•Perfeito, agora que você concluiu as etapas, vamos dar uma olhada nas suas cartas!\n•Digite 'y' e envie para ver suas cartas.");
     scanf("%s", prosseguir);
-    printf("\nCarta: 1\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\n", inicial_do_estado1, inicial_do_estado1, codigo_carta1, cidade_nome1, populacao1, area_da_cidade1, pib1, pontos_turisticos1, densidade_pop1, PIB_pc1);
-    printf("\nCarta: 2\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %d\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\n", inicial_do_estado2, inicial_do_estado2, codigo_carta2, cidade_nome2, populacao2, area_da_cidade2, pib2, pontos_turisticos2, densidade_pop2, PIB_pc2);
+    printf("\nCarta: 1\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\nSuper Poder: %.2f\n", inicial_do_estado1, inicial_do_estado1, codigo_carta1, cidade_nome1, populacao1, area_da_cidade1, pib1, pontos_turisticos1, densidade_pop1, PIB_pc1, superPoder1);
+    printf("\nCarta: 2\nEstado: %c\nCódigo: %c%s\nNome da Cidade: %s\nPopulação: %lu\nÁrea: %.2f Km²\nPIB: %.2fR$\nNúmero de pontos turísticos: %d\nDensidade Populacional: %.2f hab/km²\nPIB per Capita: %.2fR$\nSuper Poder: %.2f\n", inicial_do_estado2, inicial_do_estado2, codigo_carta2, cidade_nome2, populacao2, area_da_cidade2, pib2, pontos_turisticos2, densidade_pop2, PIB_pc2, superPoder2);
+
+
+    //Mostrando comparações (comparações)---------------------------
+    
+    printf("\n•Que tal compararmos as duas cartas e ver quem vence?\nDigite y para prosseguir");
+    scanf("%s", prosseguir);
+    printf("\nComparação das cartas: \nPopulação: Carta %d venceu\nÁrea: Carta %d venceu\nPIB: Carta %d venceu\nPontos Turísticos: Carta %d venceu\nDensidade Populacional: Carta %d\nPIB per Capita: Carta %d venceu\nSuper poder: Carta %d venceu\nCarta %d vence!\n",vpopulacao,varea,vpib,vpontosT,vdensidadeP,vPIBpC,vsuperP,vtotal);
+
 
     return 0;
 }
+
 
 
         //---NOTAS DESAFIO NOVATO---
@@ -104,6 +180,15 @@ ideia sore o porquê disso, visto que na ide vscode funciona perfeitamente...
 
 2. As únicas atualizações feitas foram as instruções pedidas no nível aventureiro, pois acredito não
 saber o suficiente ainda para fazer atualizações melhores, como melhorias...
+*/
+
+    //---NOTAS DESAFIO MESTRE---
+/*
+1. Resolvi o problema do nome da primeira cidade. Aparente eu estava usando uma string sem motivos e isso
+estava corrompendo as outras. Sla, algo assim.
+
+2. Óbviamente não havia como comparar as cartas sem (if else)(eu acho), o que é estranho, pois a essa 
+altura do curso ainda não fora ensinado (if else).
 */
 
 
